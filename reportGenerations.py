@@ -19,6 +19,9 @@ class ReportGeneration:
                 for f in os.listdir(folder_path)
                 if f.endswith(".txt") and str(year) in f
             ]
+            if files is []:
+                print("No file of this year founded or check files name ")
+                return[]
             return sorted(files)
         except Exception as e:
             print(f"Error reading directory: {e}")
@@ -32,6 +35,8 @@ class ReportGeneration:
 
     def yearly_report(self, file_list: list,date_col,max_col,min_col,humid_col):
         """Combine multiple monthly files into one yearly report."""
+        if file_list is []:
+            return "File not Founded "
         max_temp = None
         min_temp = None
         humidity = None
@@ -172,7 +177,8 @@ if __name__ == "__main__":
         match op:
             case "1":
                 directory_path=input("Enter Directory path for annual report :")
-                files=r.get_files(2004,directory_path)
+                year=input("Which Year report you want:")
+                files=r.get_files(year,directory_path)
                 r.yearly_report(files,0,1,3,7)
             case "2": 
                 filepath=input("Enter file path for monthlly report :")
