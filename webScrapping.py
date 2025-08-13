@@ -93,17 +93,6 @@ class Scrapping:
             print("No quotes found for this author.")
 
 
-
-
-
-
-
-
-
-
-
-
-
 if __name__ =="__main__":
     s=Scrapping("https://quotes.toscrape.com/")
     s.searchByTags(["humor","OBVIOUS","edison"])
